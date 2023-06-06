@@ -14,11 +14,11 @@ module.exports = function consume(mod) {
             case 'reload':
                 delete require.cache[require.resolve('./config')];
                 ({ settings, skills } = require('./config'));
-                command.message('Reloaded settings');
+                command.message('Reloaded settings.');
                 break;
             case 'skillinfo':
                 debugMode = !debugMode;
-                command.message('Skill info display is : ' + (debugMode ? 'Enabled' : 'Disabled'));
+                command.message('Skill info display is : ' + (debugMode ? 'Enabled.' : 'Disabled.'));
                 break;
             case 'help':
                 const readmePath = path.join(__dirname, 'README.md');
@@ -33,7 +33,7 @@ module.exports = function consume(mod) {
                 break;
             default:
                 enabled = !enabled;
-                command.message('Alcoholism is ' + (enabled ? 'Enabled' : 'Disabled'));
+                command.message('Alcoholism is ' + (enabled ? 'Enabled.' : 'Disabled.'));
                 break;
         }
     });
@@ -46,7 +46,7 @@ module.exports = function consume(mod) {
     mod.hook('C_START_SKILL', 7, { order: -10 }, (event) => {
         if (!enabled) return;
 
-        let skillInfo = getSkillInfo(event.skill.id);
+        const skillInfo = getSkillInfo(event.skill.id);
 
         if (debugMode) {
             command.message('Skill info: group: ' + skillInfo.group + ' / job: ' + job);
@@ -69,10 +69,7 @@ module.exports = function consume(mod) {
     });
 
     function useItem() {
-        const items = [
-            { gameId, id: 206045 },
-            { gameId, id: 80081 }, //TODO: import from config
-        ];
+        const items = settings.rootBeerIDs.map((id) => ({ gameId, id }));
 
         items.forEach((item) => {
             mod.toServer('C_USE_ITEM', 3, item);
