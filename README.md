@@ -3,7 +3,9 @@
 
 ## About <a name = "about"></a>
 
-Uses rootbeer automatically when it detects that you casted one of the skills in settings.js
+Uses rootbeer automatically when it detects that you casted one of the skills in settings.js.
+
+Option to add a delay in the settings.js
 
 ## Usage <a name = "usage"></a> 
 
@@ -23,5 +25,3 @@ Cast skills
 Add the skill into settings.js
 
 Reload
-
-

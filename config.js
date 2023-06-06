@@ -1,5 +1,5 @@
 const settings = {
-    rootBeerCD: 55000,
+    rootBeerCD: 50000, //50s because of double heal runs
     enabled: true,
     rootBeerIDs: [80081, 206045]
 };
